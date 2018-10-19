@@ -137,6 +137,11 @@ build_package_autoconf() {
   } >&4 2>&1
 }
 
+build_package_buildconf() {
+  { ./buildconf
+  } >&4 2>&1
+}
+
 build_package_ruby() {
   local package_name="$1"
 

@@ -146,6 +146,7 @@ build_package_buildconf() {
 }
 
 build_package_copy() {
+  mkdir -p "$PREFIX_PATH"
   cp -R . "$PREFIX_PATH"
 }
 

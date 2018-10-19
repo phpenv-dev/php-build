@@ -144,21 +144,6 @@ build_package_buildconf() {
   } >&4 2>&1
 }
 
-build_package_ruby() {
-  local package_name="$1"
-
-  { "$RUBY_BIN" setup.rb
-  } >&4 2>&1
-}
-
-build_package_rbx() {
-  local package_name="$1"
-
-  { ./configure --prefix="$PREFIX_PATH" --gemsdir="$PREFIX_PATH"
-    rake install
-  } >&4 2>&1
-}
-
 build_package_copy() {
   cp -R . "$PREFIX_PATH"
 }
@@ -168,7 +153,7 @@ after_install_package() {
 }
 
 fix_directory_permissions() {
-  # Ensure installed directories are not world-writable to avoid Bundler warnings
+  # Ensure installed directories are not world-writable
   find "$PREFIX_PATH" -type d -exec chmod go-w {} \;
 }
 

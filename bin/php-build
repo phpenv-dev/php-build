@@ -48,6 +48,8 @@ install_package_using() {
   local package_name="$3"
   shift 3
 
+  echo "${PHP_BUILD_DEFAULT_INI} gets used as php.ini" >&2
+
   pushd "$TEMP_PATH" >&4
   "fetch_${package_type}" "$package_name" $*
   shift $(($package_type_nargs))

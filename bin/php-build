@@ -103,6 +103,13 @@ build_package() {
   for command in $commands; do
     "build_package_${command}"
   done
+
+  # Copy php.ini to $PREFIX_PATH/etc directory
+  if [ -n "$PHP_BUILD_DEFAULT_INI" ]; then
+    if [ -f "$package_name/$PHP_BUILD_DEFAULT_INI" ]; then
+      cp "$package_name/$PHP_BUILD_DEFAULT_INI" "$PREFIX_PATH/etc/php.ini"
+    fi
+  fi
 }
 
 build_package_standard() {
@@ -187,6 +194,9 @@ list_definitions() {
     done
   } | sort
 }
+
+# Set the default php.ini to use
+PHP_BUILD_DEFAULT_INI="php.ini-recommended"
 
 
 

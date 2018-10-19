@@ -1,0 +1,1 @@
+install_git "php-5.2-dev" "https://github.com/php-src/php.git" "PHP-5.2" buildconf standard

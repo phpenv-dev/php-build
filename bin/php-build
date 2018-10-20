@@ -131,6 +131,10 @@ build_package() {
   if [ -n "$PHP_BUILD_DEFAULT_INI" ]; then
     if [ -f "$package_name/$PHP_BUILD_DEFAULT_INI" ]; then
       cp "$package_name/$PHP_BUILD_DEFAULT_INI" "$PREFIX_PATH/etc/php.ini"
+    else
+      if [ -f "$PHP_BUILD_DEFAULT_INI" ]; then
+        cp "$PHP_BUILD_DEFAULT_INI" "$PREFIX_PATH/etc/php.ini"
+      fi
     fi
   fi
 }

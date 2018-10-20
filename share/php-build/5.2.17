@@ -1,1 +1,2 @@
+PHP_BUILD_DEFAULT_INI="php.ini-recommended"
 install_package "php-5.2.17" "https://museum.php.net/php5/php-5.2.17.tar.gz"

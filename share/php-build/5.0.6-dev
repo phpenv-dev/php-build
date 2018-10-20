@@ -1,1 +1,2 @@
+PHP_BUILD_DEFAULT_INI="php.ini-recommended"
 install_git "php-5.0.6-dev" "https://github.com/php/php-src.git" "PHP-5.0" buildconf standard

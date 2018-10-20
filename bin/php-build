@@ -136,19 +136,8 @@ build_package() {
 
 build_package_standard() {
   local package_name="$1"
-  local argv
 
-  # Add `--libexecdir`,` --with-config-file-path`, `--with-config-file-scan-dir`
-  # as well as the prefix configure options
-  #
-  # This is set as the default configure options
-  argv="--prefix=$PREFIX_PATH \
---libexecdir=$PREFIX_PATH/libexec \
---with-config-file-path=$PREFIX_PATH/etc \
---with-config-file-scan-dir=$PREFIX_PATH/etc/conf.d \
-$CONFIGURE_OPTS"
-
-  { ./configure "$argv"
+  { ./configure --prefix="$PREFIX_PATH" $CONFIGURE_OPTS
     make -j 2
     make install
   } >&4 2>&1
@@ -209,7 +198,9 @@ list_definitions() {
 }
 
 # Set the default php.ini to use
-PHP_BUILD_DEFAULT_INI="php.ini-recommended"
+if [ -z "$PHP_BUILD_DEFAULT_INI" ]; then
+  PHP_BUILD_DEFAULT_INI="php.ini-production"
+fi
 
 
 
@@ -263,6 +254,13 @@ fi
 if [ ! -d "$PREFIX_PATH/libexec" ] || [ ! -d "$PREFIX_PATH/etc/conf.d" ]; then
   mkdir -p "$PREFIX_PATH/"{libexec,etc/conf.d}
 fi
+
+# Add `--libexecdir`, `--with-config-file-path`, `--with-config-file-scan-dir`
+# aswell as the prefix to the configure options.
+CONFIGURE_OPTS="--libexecdir=$PREFIX_PATH/libexec \
+--with-config-file-path=$PREFIX_PATH/etc \
+--with-config-file-scan-dir=$PREFIX_PATH/etc/conf.d \
+$CONFIGURE_OPTS"
 
 if [ -z "$TMPDIR" ]; then
   TMP="/tmp"

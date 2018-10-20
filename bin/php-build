@@ -198,8 +198,7 @@ list_definitions() {
 }
 
 # Set the default php.ini to use
-PHP_BUILD_DEFAULT_INI="php.ini-recommended"
-if [ ! -e "$PHP_BUILD_DEFAULT_INI" ]; then
+if [ -z "$PHP_BUILD_DEFAULT_INI" ]; then
   PHP_BUILD_DEFAULT_INI="php.ini-production"
 fi
 

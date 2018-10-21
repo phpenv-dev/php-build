@@ -1,0 +1,1 @@
+install_git "php-5.3.30-dev" "https://github.com/php/php-src.git" "PHP-5.3" buildconf standard

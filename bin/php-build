@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PHP_BUILD_VERSION="0.1.2"
+PHP_BUILD_VERSION="0.1.3"
 
 set -E
 exec 3<&2 # preserve original stderr at fd 3

@@ -17,6 +17,13 @@ write permission to `/usr/local`, you will need to run `sudo
 ./install.sh` instead. You can install to a different prefix by
 setting the `PREFIX` environment variable.
 
+If you only intend to use php-build via phpenv then you can
+install it locally as a plugin:
+
+    $ mkdir -p ~/.phpenv/plugins
+    $ cd ~/.phpenv/plugins
+    $ git clone git://github.com/phpenv-dev/php-build.git
+
 ### Installing PHP
 
 To install a PHP version, run the `php-build` command with the path

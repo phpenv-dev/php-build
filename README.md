@@ -25,15 +25,15 @@ number of [built-in
 definitions](https://github.com/phpenv-dev/php-build/tree/master/share/php-build)
 may be specified instead.)
 
-    $ php-build 5.0.0 ~/local/php-5.0.0
+    $ php-build 5.3.20 ~/local/php-5.3.20
 
 You can use it with [phpenv](https://github.com/phpenv-dev/phpenv):
 
-    $ php-build 5.0.0 ~/.phpenv/versions/5.0.0
+    $ php-build 5.3.20 ~/.phpenv/versions/5.3.20
 
 php-build provides an `phpenv-install` command that shortens this to:
 
-    $ phpenv install 5.0.0
+    $ phpenv install 5.3.20
 
 ### License
 

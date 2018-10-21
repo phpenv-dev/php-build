@@ -91,12 +91,23 @@ make_package() {
   popd >&4
 }
 
+fetch_url() {
+  if type curl 2>/dev/null; then
+    curl "$@"
+  elif type wget 2>/dev/null; then
+    wget -O- "$@"
+  else
+    echo "error: please install \`curl\` or \`wget\` and try again" >&2
+    exit 1
+  fi
+}
+
 fetch_tarball() {
   local package_name="$1"
   local package_url="$2"
 
   echo "Downloading ${package_url}..." >&2
-  { curl "$package_url" > "${package_name}.tar.gz"
+  { fetch_url "$package_url" > "${package_name}.tar.gz"
     tar xzvf "${package_name}.tar.gz"
   } >&4 2>&1
 }

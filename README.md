@@ -42,6 +42,14 @@ php-build provides an `phpenv-install` command that shortens this to:
 
     $ phpenv install 5.3.20
 
+php-build supports `$PHP_BUILD_BUILD_PATH` to override the location
+in which sources are downloaded and built. The -k/--keep flags will
+preserve this path after the build is complete. `phpenv-install` also
+supports the -k/--keep flag, and additionally supports an environment
+variable option `$PHPENV_BUILD_ROOT` that when set, will always build
+sources under that location, and keep the sources after build
+completion.
+
 ### License
 
 (The MIT License)

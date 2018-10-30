@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+set -e
+
+# Provide phpenv completions
+if [ "$1" = "--complete" ]; then
+  exec php-build --definitions
+fi
+
+if [ -z "$PHPENV_ROOT" ]; then
+  PHPENV_ROOT="${HOME}/.phpenv"
+fi
+
+DEFINITION="$1"
+case "$DEFINITION" in
+"" | -* )
+  { echo "usage: phpenv uninstall VERSION"
+    echo "       phpenv uninstall /path/to/definition"
+    echo
+    if [ -n `which phpenv` ]; then
+      echo "Available versions:"
+      phpenv versions | sed 's/^/  /'
+      echo
+    fi
+  } >&2
+  exit 1
+  ;;
+esac
+
+VERSION_NAME="${DEFINITION##*/}"
+PREFIX="${PHPENV_ROOT}/versions/${VERSION_NAME}"
+
+if [ ! -e "$PREFIX" ]; then
+  echo "Given version ($VERSION_NAME) is not installed"
+  exit 1
+fi
+rm -rf "$PREFIX"
+phpenv rehash

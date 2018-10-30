@@ -290,9 +290,12 @@ if [ ! -d "$PREFIX_PATH/libexec" ] || [ ! -d "$PREFIX_PATH/etc/conf.d" ]; then
   mkdir -p "$PREFIX_PATH/"{libexec,etc/conf.d}
 fi
 
-# Add `--libexecdir`, `--with-config-file-path`, `--with-config-file-scan-dir`
+# Add `--datadir`, `--libexecdir`, `--mandir`,
+# `--with-config-file-path`, `--with-config-file-scan-dir`
 # aswell as the prefix to the configure options.
-CONFIGURE_OPTS="--libexecdir=$PREFIX_PATH/libexec \
+CONFIGURE_OPTS="--datadir=$PREFIX_PATH/share/php \
+--libexecdir=$PREFIX_PATH/libexec \
+--mandir=$PREFIX_PATH/share/man \
 --with-config-file-path=$PREFIX_PATH/etc \
 --with-config-file-scan-dir=$PREFIX_PATH/etc/conf.d \
 $CONFIGURE_OPTS"

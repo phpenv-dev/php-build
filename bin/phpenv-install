@@ -25,7 +25,7 @@ case "$DEFINITION" in
   ;;
 "-k" | "--keep" )
   [ -z "${PHPENV_BUILD_ROOT}" ] && PHPENV_BUILD_ROOT="${PHPENV_ROOT}/sources"
-  PHP_BUILD_OPTIONS+=" -k"
+  PHP_BUILD_OPTIONS="${PHP_BUILD_OPTIONS} -k"
   ;;
 esac
 
@@ -36,7 +36,7 @@ PREFIX="${PHPENV_ROOT}/versions/${VERSION_NAME}"
 # php-build
 if [ -n "${PHPENV_BUILD_ROOT}" ]; then
   export PHP_BUILD_BUILD_PATH="${PHPENV_BUILD_ROOT}/${VERSION_NAME}"
-  PHP_BUILD_OPTIONS+=" -k"
+  PHP_BUILD_OPTIONS="${PHP_BUILD_OPTIONS} -k"
 fi
 
 php-build "$DEFINITION" "$PREFIX" "$PHP_BUILD_OPTIONS"

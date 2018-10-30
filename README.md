@@ -86,7 +86,7 @@ develop and install versions of PHP that are not yet supported by
 php-build.
 
 See the [php-build built-in
-definitions](https://github.com/phpenv-dev/php-build/tree/share/php-build)
+definitions](https://github.com/phpenv-dev/php-build/tree/master/share/php-build)
 as a starting point for custom definition files.
 
 ### Special environment variables

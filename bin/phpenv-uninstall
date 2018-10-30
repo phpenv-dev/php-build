@@ -3,24 +3,32 @@ set -e
 
 # Provide phpenv completions
 if [ "$1" = "--complete" ]; then
-  exec php-build --definitions
+  exec phpenv versions --bare
 fi
 
 if [ -z "$PHPENV_ROOT" ]; then
   PHPENV_ROOT="${HOME}/.phpenv"
 fi
 
+if [ "$1" = "-f" ]; then
+  FORCE=1
+  shift
+else
+  FORCE=""
+fi
+
 DEFINITION="$1"
 case "$DEFINITION" in
 "" | -* )
-  { echo "usage: phpenv uninstall VERSION"
-    echo "       phpenv uninstall /path/to/definition"
+  { echo "usage: phpenv uninstall [-f] VERSION"
     echo
-    if [ -n `which phpenv` ]; then
-      echo "Available versions:"
-      phpenv versions | sed 's/^/  /'
-      echo
-    fi
+    echo "   -f  Attempt to remove the specified version without prompting"
+    echo "       for confirmation. If the version does not exist, do not"
+    echo "       display an error message."
+    echo
+    echo "Available versions:"
+    phpenv versions --bare | sed 's/^/  /'
+    echo
   } >&2
   exit 1
   ;;
@@ -29,9 +37,20 @@ esac
 VERSION_NAME="${DEFINITION##*/}"
 PREFIX="${PHPENV_ROOT}/versions/${VERSION_NAME}"
 
-if [ ! -e "$PREFIX" ]; then
-  echo "Given version ($VERSION_NAME) is not installed"
-  exit 1
+if [ -z "$FORCE" ]; then
+  if [ ! -d "$PREFIX" ]; then
+    echo "phpenv: version \`$VERSION_NAME' not installed" >&2
+    exit 1
+  fi
+
+  read -p "phpenv: remove $PREFIX? "
+  case "$REPLY" in
+  y* | Y* ) ;;
+  * ) exit 1 ;;
+  esac
 fi
-rm -rf "$PREFIX"
-phpenv rehash
+
+if [ -d "$PREFIX" ]; then
+  rm -rf "$PREFIX"
+  phpenv rehash
+fi

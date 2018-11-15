@@ -1,6 +1,6 @@
 # php-build
 
-php-build is an [phpenv](https://github.com/phpenv-dev/phpenv) plugin
+php-build is an [phpenv](https://github.com/sptndc/phpenv) plugin
 that provides an `phpenv install` command to compile and install
 different versions of PHP on UNIX-like systems.
 
@@ -86,7 +86,7 @@ develop and install versions of PHP that are not yet supported by
 php-build.
 
 See the [php-build built-in
-definitions](https://github.com/phpenv-dev/php-build/tree/master/share/php-build)
+definitions](https://github.com/sptndc/php-build/tree/master/share/php-build)
 as a starting point for custom definition files.
 
 ### Special environment variables
@@ -119,11 +119,11 @@ command. You should specify the location of the source code with the
 ## Getting Help
 
 Please see the [php-build
-wiki](https://github.com/phpenv-dev/php-build/wiki) for solutions to
+wiki](https://github.com/sptndc/php-build/wiki) for solutions to
 common problems.
 
 If you can't find an answer on the wiki, open an issue on the [issue
-tracker](https://github.com/phpenv-dev/php-build/issues). Be sure to
+tracker](https://github.com/sptndc/php-build/issues). Be sure to
 include the full build log for build failures.
 
 ### License

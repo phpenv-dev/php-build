@@ -227,14 +227,6 @@ fix_directory_permissions() {
   find "$PREFIX_PATH" -type d -exec chmod go-w {} \;
 }
 
-use_gcc42_on_lion() {
-  if [ "$(uname -s)" = "Darwin" ]; then
-    if [ "$(expr "$(sw_vers -productVersion | cut -f 2 -d .)" \>= 7 || true)" -eq 1 ]; then
-      export CC=/usr/bin/gcc-4.2
-    fi
-  fi
-}
-
 version() {
   echo "php-build ${PHP_BUILD_VERSION}"
 }
@@ -356,9 +348,6 @@ fi
 
 export LDFLAGS="-L'${PREFIX_PATH}/lib' ${LDFLAGS}"
 export CPPFLAGS="-I'${PREFIX_PATH}/include' ${CPPFLAGS}"
-
-unset PHPOPT
-unset PHPLIB
 
 trap build_failed ERR
 mkdir -p "$BUILD_PATH"

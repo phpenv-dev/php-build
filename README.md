@@ -57,9 +57,9 @@ the exact name of the version you want to install. For example,
 PHP versions will be installed into a directory of the same name
 under `~/.phpenv/versions`.
 
-To see a list of all available PHP versions, run `phpenv install`
-without any arguments. You may also tab-complete available PHP
-versions if your phpenv installation is properly configured.
+To see a list of all available PHP versions, run `phpenv install
+--list`. You may also tab-complete available PHP versions if your
+phpenv installation is properly configured.
 
 ### Using `php-build` standalone
 

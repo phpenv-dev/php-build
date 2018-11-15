@@ -60,6 +60,10 @@ done
 DEFINITION="${ARGUMENTS[0]}"
 [ -n "$DEFINITION" ] || usage 1
 
+for script in $(phpenv-hooks install); do
+  source "$script"
+done
+
 VERSION_NAME="${DEFINITION##*/}"
 PREFIX="${PHPENV_ROOT}/versions/${VERSION_NAME}"
 

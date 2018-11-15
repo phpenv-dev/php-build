@@ -17,9 +17,7 @@ and modified for PHP._
 Installing php-build as an phpenv plugin will give you access to the
 `phpenv install` command.
 
-    $ mkdir -p ~/.phpenv/plugins
-    $ cd ~/.phpenv/plugins
-    $ git clone git://github.com/phpenv-dev/php-build.git
+    $ git clone git://github.com/phpenv-dev/php-build.git ~/.phpenv/plugins/php-build
 
 This will install the latest development version of php-build into
 the `~/.phpenv/plugins/php-build` directory. From that directory, you
